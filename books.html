@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+</head>
+<body>
+    <h1>Book Details</h1>
+    <script>
+        // Step 3: Fetch the JSON data
+        fetch('https://raw.githubusercontent.com/SarahSukri11/Lab5aWEB/refs/heads/main/books.json')
+            .then(response => response.json())
+            .then(data => {
+                // Step 4: Extract and display the required details
+                const firstBookTitle = data.books[0].title;
+                const secondBookAuthor = data.books[1].author;
+                const allGenres = data.books.flatMap(book => book.genres).join(', ');
+
+                // Display the results in the console
+                console.log("Title of the first book:", firstBookTitle);
+                console.log("Author of the second book:", secondBookAuthor);
+                console.log("Genres of all books:", allGenres);
+            })
+            .catch(error => console.error('Error fetching the JSON:', error));
+    </script>
+</body>
+</html>
